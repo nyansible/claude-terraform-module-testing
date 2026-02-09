@@ -60,3 +60,8 @@ module "vpc" {
   enable_nat_gateway = true
   single_nat_gateway = true
 }
+module "ec2" {
+  source = "./modules/ec2-instance"
+  security_group_ids = ["sg-349434"]
+  subnet_id = module.vpc.public_subnets[1]
+}
